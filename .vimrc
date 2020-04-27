@@ -6,7 +6,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'NLKNguyen/papercolor-theme'
+Plug 'altercation/vim-colors-solarized'
 Plug 'leafOfTree/vim-vue-plugin'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
@@ -14,10 +14,12 @@ Plug 'garbas/vim-snipmate'
 Plug 'vim-syntastic/syntastic'
 Plug 'eslint/eslint'
 Plug 'pangloss/vim-javascript'
+Plug 'tpope/vim-surround'
+Plug 'ChristianNogueira/Qlikview_Vim_Syntax'
 
 call plug#end()
 
-set cursorline " подсветить активную строку
+"set cursorline " подсветить активную строку
 set noerrorbells " отключить звуковые уведомления
 set novisualbell " отключить визуальные уведомления
 set number " включить нумерацию строк
@@ -43,12 +45,11 @@ set showmatch
 syntax on " включить подсветку синтаксиса
 
 
-colorscheme PaperColor
-let g:airline_theme='papercolor'
-
- " поддержка прозрачности фона для совместимости с прозрачностью терминала
-hi Normal guibg=NONE ctermbg=NONE 
-
+colorscheme solarized
+set t_Co=256
+let g:solarized_termcolors=256
+let g:solarized_underline=0
+let g:airline_theme='solarized'
 
 " маппинги
 map <leader> <Plug>(esymotion-prefix)
@@ -143,7 +144,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 " переключение dark-light mode
 " решение взято отсюда https://superuser.com/a/1246650
 " скрипт xfce4-color-switch взят отсюда https://askubuntu.com/a/676452
-function! NightMode_switch()
+function! BGModeByTime()
   if $VISUALMODE ==? 'dark'
     set background=dark
     "execute "silent !xfce4-color-switch base16-papercolor-dark.16"
@@ -155,6 +156,5 @@ function! NightMode_switch()
   endif
 endfunction
 
-command! BSwitch call NightMode_switch()
-call NightMode_switch()
+call BGModeByTime()
 
